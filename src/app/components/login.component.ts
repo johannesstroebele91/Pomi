@@ -41,14 +41,13 @@ import {AuthResponseData} from "../shared/models";
       <mat-card-header style="display: block;">
         <mat-card-title style=" font-size: 36px">Welcome!</mat-card-title>
         <mat-card-subtitle style="margin: 30px auto 10px auto; font-size: 24px;"
-        >GitHub User Analytics enables you to:
+        >Our productivity app help you to:
         </mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <ul style="margin-bottom: 30px; text-align: left">
-          <li>Get technical insights int the GitHub profile of users</li>
-          <li>Visualize insights making them more easy to understand</li>
-          <li>Get detailed information about each repository</li>
+          <li>complete your tasks</li>
+          <li>stay focused during your work</li>
         </ul>
         <form (ngSubmit)="onSubmit()">
           <div [formGroup]="loginForm">

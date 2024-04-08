@@ -19,7 +19,7 @@ import {AuthService} from "./services/auth.service";
     <mat-toolbar color="primary">
       <mat-toolbar-row>
         <span style="letter-spacing: 1px">{{ title }}</span>
-        <mat-icon style="margin-left: 5px">troubleshoot</mat-icon>
+        <mat-icon style="margin-left: 5px">alarm</mat-icon>
         <span style="flex: 1 1 auto;"></span>
         <a *ngIf="isNotOnLoginOrRegisterPage() && isAuthenticated" routerLink="/" (click)="logout()"
            style="color: white; text-decoration: none; font-size: 16px">Logout</a>
@@ -28,12 +28,11 @@ import {AuthService} from "./services/auth.service";
     <div style=" margin: 60px auto;">
       <router-outlet></router-outlet>
     </div>
-
   `,
 })
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
-  title = 'GitHub User Analytics';
+  title = 'Pomi';
   private userSub: Subscription | undefined;
 
   constructor(private router: Router, private authService: AuthService) {
