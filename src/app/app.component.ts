@@ -33,7 +33,7 @@ import {AuthService} from "./services/auth.service";
 })
 export class AppComponent implements OnInit, OnDestroy {
   isAuthenticated = false;
-  title = 'GitHub User Analytics';
+  title = 'Pomi';
   private userSub: Subscription | undefined;
 
   constructor(private router: Router, private authService: AuthService) {
