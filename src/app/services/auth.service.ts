@@ -8,7 +8,7 @@ import {Router} from "@angular/router";
 const IDENTITY_URL = 'https://identitytoolkit.googleapis.com/v1/accounts:';
 const URL_KEY = '?key='
 const MILLI_SECONDS = 1000;
-const KEY = 'AIzaSyC_ikEyxD3n5qXF1h0n4O5hJve2T9kPLIM';
+const KEY = 'AIzaSyDd4g-B2ptFdvj-mlSfLTgz4Jv407nxGg4';
 
 @Injectable({
   providedIn: 'root',
