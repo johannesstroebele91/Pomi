@@ -123,9 +123,12 @@ import {MatProgressSpinner} from "@angular/material/progress-spinner";
                     }}
                   </mat-icon>
                 </button>
-                <mat-error *ngIf="password.invalid">{{
-                    ERROR_MESSAGE
+                <mat-error *ngIf="signupErrorMessage" style="margin-bottom: 10px">{{
+                    signupErrorMessage
                   }}
+                </mat-error>
+                <mat-error *ngIf="requestErrorMessage !== ''" style="margin-bottom: 10px">
+                  {{ requestErrorMessage }}
                 </mat-error>
               </mat-form-field>
             </div>
@@ -169,6 +172,7 @@ export class RegistrationComponent {
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', Validators.required),
   });
+  requestErrorMessage: string = ''
   protected readonly ERROR_MESSAGE = ERROR_MESSAGE;
 
   get name(): any {
@@ -200,7 +204,8 @@ export class RegistrationComponent {
         })
         .subscribe({
           error: (error) => {
-            console.error('Error creating local user:', error);
+            this.requestErrorMessage = error;
+            console.error('Error on sign in:', error);
           },
           complete: () => {
             this.router.navigate(['/home']);

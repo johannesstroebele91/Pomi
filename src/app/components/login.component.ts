@@ -104,8 +104,8 @@ import {AuthResponseData} from "../shared/models";
           </button>
         </form>
       </mat-card-content>
-      <mat-error *ngIf="errorMessage" style="margin-top: 10px"
-      >{{ ERROR_MESSAGE }}
+      <mat-error *ngIf="requestErrorMessage !== ''" style="margin-top: 10px"
+      >{{ requestErrorMessage }}
       </mat-error>
       <mat-card-footer
       ><p style="margin: 20px auto 0;">
@@ -125,6 +125,7 @@ export class LoginComponent implements OnDestroy {
   });
   router = inject(Router);
   authService = inject(AuthService);
+  requestErrorMessage: string = '';
   protected readonly ERROR_MESSAGE = ERROR_MESSAGE;
   private authServiceSub: Subscription | undefined;
 
@@ -152,7 +153,8 @@ export class LoginComponent implements OnDestroy {
             if (response.registered) this.router.navigate(['/home']);
           },
           error: (error) => {
-            console.error('Error logging in:', error);
+            console.log('Error on log in', error)
+            this.requestErrorMessage = 'The combination of the email and password that you have entered, does not exists';
           },
         });
     }
