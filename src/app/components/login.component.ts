@@ -15,25 +15,6 @@ import {AuthResponseData} from "../shared/models";
 
 @Component({
   selector: 'app-login',
-  imports: [
-    CommonModule,
-    FormsModule,
-    MatFormField,
-    MatInput,
-    MatIconButton,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSelect,
-    MatOption,
-    MatCard,
-    MatCardHeader,
-    MatCardContent,
-    MatCardModule,
-    RouterLink,
-  ],
   template: `
     <mat-card
       style="padding: 30px 12px; text-align: center; max-width: 500px; margin: 0 auto;"
@@ -115,9 +96,27 @@ import {AuthResponseData} from "../shared/models";
     </mat-card>
   `,
   standalone: true,
+  imports: [
+    CommonModule,
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatIconButton,
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatSelect,
+    MatOption,
+    MatCard,
+    MatCardHeader,
+    MatCardContent,
+    MatCardModule,
+    RouterLink,
+  ],
 })
 export class LoginComponent implements OnDestroy {
-  errorMessage: string = '';
   hidePasswordInput = true;
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),

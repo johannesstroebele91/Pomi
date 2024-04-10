@@ -21,7 +21,9 @@ import {MatProgressBar} from "@angular/material/progress-bar";
           [color]="'primary'"
           [mode]="'determinate'"
           [value]="progress"></mat-progress-spinner>
-        <button mat-raised-button color="primary" (click)="startTimer()">Start</button>
+        <button mat-raised-button color="primary" (click)="toggleTimer()">{{ timerIsRunning ? 'Stop' : 'Start' }}
+        </button>
+        <button mat-raised-button color="warn" (click)="resetTimer()">Reset</button>
       </mat-card-content>
     </mat-card>
   `,
@@ -45,26 +47,49 @@ export class HomeComponent implements OnInit {
   minutes: number = 25;
   seconds: number = 0;
   progress: number = 100;
+  protected timerIsRunning = false;
+  private interval: any;
 
   ngOnInit() {
     this.updateTime();
   }
 
+  toggleTimer() {
+    if (this.timerIsRunning) {
+      this.stopTimer();
+    } else {
+      this.startTimer();
+    }
+  }
+
   startTimer() {
+    this.timerIsRunning = true;
     const totalSeconds = this.minutes * 60 + this.seconds;
     let currentSeconds = totalSeconds;
 
-    const interval = setInterval(() => {
-      if (currentSeconds > 0) {
+    this.interval = setInterval(() => {
+      if (currentSeconds > 0 && this.timerIsRunning) {
         currentSeconds--;
         this.progress = (currentSeconds / totalSeconds) * 100;
         this.minutes = Math.floor(currentSeconds / 60);
         this.seconds = currentSeconds % 60;
       } else {
-        clearInterval(interval);
+        this.stopTimer();
         // Logic for when the timer completes
       }
     }, 1000);
+  }
+
+  stopTimer() {
+    this.timerIsRunning = false;
+    clearInterval(this.interval);
+  }
+
+  resetTimer() {
+    this.stopTimer();
+    this.minutes = 25;
+    this.seconds = 0;
+    this.progress = 100;
   }
 
   updateTime() {
