@@ -14,6 +14,7 @@ import {RouterLink} from '@angular/router';
 import {MatProgressSpinner} from '@angular/material/progress-spinner';
 import {MatButton} from "@angular/material/button";
 import {MatProgressBar} from "@angular/material/progress-bar";
+import {MatChipListbox, MatChipOption} from "@angular/material/chips";
 
 @Component({
   selector: 'app-home',
@@ -34,22 +35,22 @@ import {MatProgressBar} from "@angular/material/progress-bar";
     MatProgressBar,
     MatCardFooter,
     MatCardActions,
+    MatChipListbox,
+    MatChipOption,
   ],
   template: `
-    <mat-card style="max-width: 300px; margin: 100px auto">
+    <mat-card style="max-width: 550px; margin: 100px auto; padding: 30px">
+      <mat-chip-listbox aria-label="Timer selection" style="margin: 0 auto">
+        <mat-chip-option [selected]="activeTimer === 25" (click)="setTimer(25)">Pomodoro (25min)</mat-chip-option>
+        <mat-chip-option [selected]="activeTimer === 5" (click)="setTimer(5)">Small Break (5min)</mat-chip-option>
+        <mat-chip-option [selected]="activeTimer === 15" (click)="setTimer(15)">Long Break (15min)</mat-chip-option>
+      </mat-chip-listbox>
+
+      <mat-card-header style="margin: 0 auto;">
+        <mat-card-title style="font-size: 30px;">{{ displayTime() }}
+        </mat-card-title>
+      </mat-card-header>
       <mat-card-content style="text-align: center;  margin: 20px auto">
-        <div>
-          <button mat-raised-button color="{{ activeTimer === 25 ? 'primary' : '' }}" (click)="setTimer(25)">Pomodoro
-            (25min)
-          </button>
-          <button mat-raised-button color="{{ activeTimer === 5 ? 'primary' : '' }}" (click)="setTimer(5)">Small Break
-            (5min)
-          </button>
-          <button mat-raised-button color="{{ activeTimer === 15 ? 'primary' : '' }}" (click)="setTimer(15)">Long Break
-            (15min)
-          </button>
-        </div>
-        <h2 style="font-size: 30px">{{ displayTime() }}</h2>
         <mat-progress-spinner
           style="margin-bottom: 20px"
           [diameter]="200"
@@ -57,7 +58,7 @@ import {MatProgressBar} from "@angular/material/progress-bar";
           [mode]="'determinate'"
           [value]="progress"></mat-progress-spinner>
       </mat-card-content>
-      <mat-card-footer style="margin-bottom: 20px">
+      <mat-card-footer>
         <mat-card-actions style=" display: flex; justify-content: space-evenly">
           <button *ngIf="!timerIsRunning" mat-raised-button color="primary" (click)="toggleTimer()">Start</button>
           <button *ngIf="timerIsRunning" mat-raised-button color="warn" (click)="toggleTimer()">Stop</button>
