@@ -8,7 +8,8 @@ Pomi is a cloud-based application designed to boost your productivity using the 
 
 # Learnings
 
-- Angular Material reactive forms 
+- timer logic
+- Angular Material reactive forms
 - Angular GET-, PUT-, POST-requests with realtime Firebase
 - Email/Password registration and login via Firebase authentication 
 - Protect routs with authentication guards
