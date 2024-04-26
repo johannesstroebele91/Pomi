@@ -6,6 +6,15 @@ Pomi is a cloud-based application designed to boost your productivity using the 
 - Start/Stop and Reset Buttons: Easily control your timer and start fresh whenever needed.
 - Login and Registration: Securely register and log in using your email and password.
 
+# Learnings
+
+- Angular Material reactive forms 
+- Angular GET-, PUT-, POST-requests with realtime Firebase
+- Email/Password registration and login via Firebase authentication 
+- Protect routs with authentication guards
+- Interceptors for checking authentication automatically for each request
+- Deployment with Vercel
+
 # Technology
 - Mobile-First Design: for seamless use across various platforms.
 - Frontend: built with Angular and Angular Material for a robust and up-to-date development foundation.
